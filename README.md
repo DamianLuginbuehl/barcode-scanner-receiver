@@ -1,5 +1,5 @@
 ### Receives information from a barcode scanner
-#IMPORTANT: Only works for keyboard emulation scanners.
+# IMPORTANT: Only works for keyboard emulation scanners.
 
 ## Settings
 * maxScanTime : set the maximum amount of ms before stopping the (unstartet) scan
