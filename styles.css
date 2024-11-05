@@ -1,0 +1,11 @@
+/* #hidden {
+    display: none;
+} */
+
+#activate {
+    color: red;
+}
+
+#activate.active {
+    color: green;
+}
