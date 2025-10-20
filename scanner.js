@@ -15,32 +15,36 @@ function startScan(continous = false, maxDelay = 200, maxTime = -1) {
     continousScan = continous;
     maxInputDelay = maxDelay;
     maxScanTime = maxTime;
-    /************ INSERT FUNCTIONS BEFORE THE SCAN IS STARTED HERE ************/
+    /************ THESE FUNCTIONS ARE EXECUTED BEVORE THE SCAN IS STARTED ************/
 
     /************ END ************/
     hiddenField.value = '';
     if (maxScanTime >= 0) {
-        scanTimeout = setTimeout(stopScan, maxScanTime);
+        scanTimeout = setTimeout(terminateScan, maxScanTime);
     }
     scanListener = true;
     scanReset = true;
 }
-
 function stopScan() {
+    continousScan = false;
+    terminateScan();
+
+    /************ THESE FUNCTIONS ARE EXECUTED AFTER THE SCAN IS FINISHED ************/
+
+    /************ END ************/
+}
+function terminateScan() {
     clearTimeout(scanTimeout);
     scanReset = false;
     scanListener = false;
-    /** optional button reset */
-    // document.querySelector('#activate').classList.remove('active');
-
     if (!continousScan) return;
 
     /************ INSERT VALUE PROCESSING HERE. VALUE: hiddenField.value ************/
-    console.log(hiddenField.value);
+
     /************ END ************/
+
     hiddenField.value = '';
     startScan(continousScan, maxInputDelay, maxScanTime);
-    /** add functions to execute after scan */
 }
 
 window.addEventListener('keydown', (e) => {
@@ -56,7 +60,7 @@ window.addEventListener('keydown', (e) => {
         hiddenField.value += e.key;
         /** max delay between inputs */
         if (maxInputDelay >= 0) {
-            inputTimeout = setTimeout(stopScan, maxInputDelay);
+            inputTimeout = setTimeout(terminateScan, maxInputDelay);
         }
     }
 });
