@@ -16,8 +16,9 @@ function startScan(continous = false, maxDelay = 200, maxTime = -1) {
     maxInputDelay = maxDelay;
     maxScanTime = maxTime;
     /************ INSERT FUNCTIONS BEFORE THE SCAN IS STARTED HERE ************/
-  
+
     /************ END ************/
+    hiddenField.value = '';
     if (maxScanTime >= 0) {
         scanTimeout = setTimeout(stopScan, maxScanTime);
     }
@@ -31,13 +32,14 @@ function stopScan() {
     scanListener = false;
     /** optional button reset */
     // document.querySelector('#activate').classList.remove('active');
-    
-  
+
+    if (!continousScan) return;
+
     /************ INSERT VALUE PROCESSING HERE. VALUE: hiddenField.value ************/
-  
+    console.log(hiddenField.value);
     /************ END ************/
     hiddenField.value = '';
-    if (continousScan) startScan(continousScan, maxInputDelay, maxScanTime);
+    startScan(continousScan, maxInputDelay, maxScanTime);
     /** add functions to execute after scan */
 }
 
@@ -59,5 +61,4 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-export {startScan, stopScan}
-
+// export { startScan, stopScan };
