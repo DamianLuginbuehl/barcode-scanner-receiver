@@ -65,4 +65,4 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// export { startScan, stopScan };
+export { startScan, stopScan };
