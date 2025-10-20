@@ -37,7 +37,7 @@ function stopScan() {
   
     /************ END ************/
     hiddenField.value = '';
-    if (continousScan) startScan();
+    if (continousScan) startScan(continousScan, maxInputDelay, maxScanTime);
     /** add functions to execute after scan */
 }
 
