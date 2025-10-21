@@ -1,3 +1,4 @@
+
 let maxInputDelay = 200;
 let maxScanTime = -1;
 
@@ -70,10 +71,10 @@ window.addEventListener('keydown', (e) => {
             inputTimeout = setTimeout(terminateScan, maxInputDelay);
         }
     }
-    else if (e.key === "Enter") {
+    else if (scanListener == true && e.key === "Enter") {
         processResult(hiddenField.value);
         hiddenField.value = '';
     }
 });
 
-// export { startScan, stopScan };
+export { startScan, stopScan };
