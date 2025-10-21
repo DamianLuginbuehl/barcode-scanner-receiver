@@ -58,6 +58,7 @@ function terminateScan() {
 window.addEventListener('keydown', (e) => {
     if (scanListener == true && scanReset == true) {
         /** value input reset */
+        document.activeElement.blur();
         hiddenField.value = '';
         scanReset = false;
     }
