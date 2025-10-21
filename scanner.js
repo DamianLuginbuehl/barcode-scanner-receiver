@@ -1,4 +1,3 @@
-
 let maxInputDelay = 200;
 let maxScanTime = -1;
 
@@ -25,6 +24,7 @@ function startScan(continous = false, maxDelay = 200, maxTime = -1) {
     scanListener = true;
     scanReset = true;
 }
+
 function stopScan() {
     continousScan = false;
     terminateScan();
@@ -33,16 +33,23 @@ function stopScan() {
 
     /************ END ************/
 }
+
+function processResult(value) {
+    /************ INSERT VALUE PROCESSING HERE. VALUE: hiddenField.value ************/
+    
+    /************ END ************/
+}
+
+
+
+
+
+
 function terminateScan() {
     clearTimeout(scanTimeout);
     scanReset = false;
     scanListener = false;
     if (!continousScan) return;
-
-    /************ INSERT VALUE PROCESSING HERE. VALUE: hiddenField.value ************/
-
-    /************ END ************/
-
     hiddenField.value = '';
     startScan(continousScan, maxInputDelay, maxScanTime);
 }
@@ -63,6 +70,10 @@ window.addEventListener('keydown', (e) => {
             inputTimeout = setTimeout(terminateScan, maxInputDelay);
         }
     }
+    else if (e.key === "Enter") {
+        processResult(hiddenField.value);
+        hiddenField.value = '';
+    }
 });
 
-export { startScan, stopScan };
+// export { startScan, stopScan };
